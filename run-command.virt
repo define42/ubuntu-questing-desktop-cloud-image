@@ -2,13 +2,6 @@ install xfce4,xfce4-goodies,xfce4-terminal,lightdm,lightdm-gtk-greeter,xauth,xse
 
 run-command ln -sf /dev/null /etc/systemd/system/systemd-networkd-wait-online.service
 
-upload google-chrome-stable_current_amd64.deb:/tmp/google-chrome-stable_current_amd64.deb
-run-command apt-get install -y /tmp/google-chrome-stable_current_amd64.deb
-run-command rm -f /tmp/google-chrome-stable_current_amd64.deb
-
-#upload code_1.107.1-1765982436_amd64.deb:/tmp/code_1.107.1-1765982436_amd64.deb
-#run-command apt-get install -y /tmp/code_1.107.1-1765982436_amd64.deb
-#run-command rm -f /tmp/*.deb
 
 run-command grub-install --target=i386-pc /dev/sda
 run-command update-grub
