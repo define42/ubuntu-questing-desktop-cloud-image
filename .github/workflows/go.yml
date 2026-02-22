@@ -37,7 +37,7 @@ jobs:
 
       - name:  Resize
         run: |
-          cp questing-server-cloudimg-amd64.img questing-expanded.imt g
+          cp questing-server-cloudimg-amd64.img questing-expanded.img
           #qemu-img create -f qcow2 questing-expanded.img 8G
           #sudo virt-resize --expand /dev/sda1 questing-server-cloudimg-amd64.img questing-expanded.img
 
