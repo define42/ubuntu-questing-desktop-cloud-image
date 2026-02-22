@@ -50,6 +50,12 @@ run-command printf 'deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microso
 run-command apt-get update
 install code
 
+# Add Google Chrome repository and install chrome
+run-command wget -qO- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /etc/apt/keyrings/google-chrome.gpg
+run-command printf 'deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main\n' > /etc/apt/sources.list.d/google-chrome.list
+run-command apt-get update
+install google-chrome-stable
+
 # Reduce Firefox CPU usage under XRDP
 run-command mkdir -p /etc/firefox/policies/
 upload policies.json:/etc/firefox/policies/policies.json
