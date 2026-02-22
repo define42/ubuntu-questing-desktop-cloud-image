@@ -30,7 +30,7 @@ jobs:
         run: |
           ls -la
           sudo apt update -y
-          sudo apt install wget curl libguestfs-tools -y
+          sudo apt install wget e2fsprogs curl libguestfs-tools -y
 
       - name: WGET
         run: wget https://cloud-images.ubuntu.com/questing/current/questing-server-cloudimg-amd64.img
