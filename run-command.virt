@@ -1,4 +1,4 @@
-install xfce4,xfce4-goodies,xfce4-terminal,lightdm,lightdm-gtk-greeter,xauth,xserver-xorg-input-libinput,xserver-xorg-legacy,xrdp,xorgxrdp,dbus-x11,grub-pc-bin,vim,net-tools,nmap,snapd,wget
+install xfce4,xfce4-goodies,xfce4-terminal,lightdm,lightdm-gtk-greeter,xauth,xserver-xorg-input-libinput,xserver-xorg-legacy,xrdp,xorgxrdp,dbus-x11,grub-pc-bin,vim,net-tools,nmap,snapd,wget,gnupg
 
 run-command ln -sf /dev/null /etc/systemd/system/systemd-networkd-wait-online.service
 
@@ -43,6 +43,12 @@ run-command printf 'deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] h
 run-command printf 'Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n' > /etc/apt/preferences.d/mozilla
 run-command apt-get update
 install firefox
+
+# Add VS Code repository and install code
+run-command wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /etc/apt/keyrings/packages.microsoft.gpg
+run-command printf 'deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main\n' > /etc/apt/sources.list.d/vscode.list
+run-command apt-get update
+install code
 
 # Reduce Firefox CPU usage under XRDP
 run-command mkdir -p /etc/firefox/policies/
